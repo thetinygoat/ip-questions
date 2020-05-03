@@ -17,19 +17,13 @@ vector<int> rangeAddition(int n, vector<vector<int>> queries)
         ans[ei] += -inc;
     }
 
-    for (int i = 0; i < prefix.size(); i++)
+    prefix[0] = ans[0];
+    for (int i = 1; i < prefix.size(); i++)
     {
-        if (i == 0)
-        {
-            prefix[i] = ans[i];
-        }
-        else
-        {
-            prefix[i] = ans[i] + prefix[i - 1];
-        }
+        prefix[i] = ans[i] + prefix[i - 1];
     }
 
-    return ans;
+    return prefix;
 }
 
 int main()
@@ -38,7 +32,11 @@ int main()
     vector<vector<int>> q = {{1, 3, 2},
                              {2, 4, 3},
                              {0, 2, -2}};
-    rangeAddition(n, q);
+    vector<int> ans = rangeAddition(n, q);
+    for (int e : ans)
+    {
+        cout << e << " ";
+    }
 
     return 0;
 }

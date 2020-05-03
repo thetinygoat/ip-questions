@@ -8,8 +8,8 @@ int maxrangequeries(int size, vector<vector<int>> queries, int k)
     vector<int> cakes(size + 1, 0);
     for (vector<int> q : queries)
     {
-        int si = q[0] - 1;
-        int ei = q[1];
+        int si = q[0];
+        int ei = q[1] + 1;
         int inc = 1;
         cakes[si] += inc;
         cakes[ei] += -inc;
